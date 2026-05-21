@@ -27,8 +27,8 @@
       <a-entity 
 environment="preset: starry; groundColor: #445; grid: cross">
   </a-entity>
-    <a-entity light="type: ambient; intensity: 0.8"></a-entity>
-    <a-entity light="type: directional; intensity: 0.6" position="1 4 2"></a-entity>
+    <a-entity light="type: ambient; intensity: 0.1"></a-entity>
+    <a-entity light="type: directional; intensity: 0.12" position="1 4 2"></a-entity>
 
     <a-plane
       position="0 0 -4"
@@ -36,12 +36,12 @@ environment="preset: starry; groundColor: #445; grid: cross">
       width="8"
       height="8"
       visible="false"
-      color="#DDDDDD">
+      color="#EEE9E9">
     </a-plane>
 
     <a-entity id="camera" position="0 -0.291 -0.979">
       <a-camera wasd-controls-enabled="false">
-        <a-cursor raycaster="objects: .clickable"></a-cursor>
+        <a-cursor color="#DDDDDD" raycaster="objects: .clickable"></a-cursor>
       </a-camera>
     </a-entity>
   </a-scene>
