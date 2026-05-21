@@ -1,3 +1,16 @@
+document.addEventListener("DOMContentLoaded", function () {
+  let loadingElement = document.getElementById("loading");
+  let scene = document.querySelector("a-scene");
+  
+  if (scene.hasLoaded) {
+    loadingElement.style.display = "none"; 
+  } else {
+     scene.addEventListener("loaded", function () {
+     loadingElement.style.display = "none";
+     });
+    }
+});
+
 AFRAME.registerComponent("lod-graph", {
   init: function () {
     const scene = this.el;
@@ -109,6 +122,7 @@ AFRAME.registerComponent("lod-graph", {
 
       sphere.addEventListener("click", () => {
         showInfo(node);
+        toggleZoom(node);
       });
 
       scene.appendChild(sphere);
@@ -127,5 +141,48 @@ AFRAME.registerComponent("lod-graph", {
 
       scene.appendChild(label);
     });
+    const camera = document.querySelector("#camera");
+
+    const defaultCameraPosition = {
+      x: 0,
+      y: -0.291,
+      z: -0.979
+    };
+
+    let focusedNodeId = null;
+
+    function positionToString(position) {
+      return `${position.x} ${position.y} ${position.z}`;
+    }
+
+    function moveCameraTo(position) {
+      camera.removeAttribute("animation__zoom");
+
+      camera.setAttribute("animation__zoom", {
+        property: "position",
+        to: positionToString(position),
+        dur: 800,
+        easing: "easeInOutQuad"
+      });
+    }
+
+    function toggleZoom(node) {
+      if (focusedNodeId === node.id) {
+        moveCameraTo(defaultCameraPosition);
+        focusedNodeId = null;
+        return;
+      }
+
+      const zoomPosition = {
+        x: node.position.x,
+        y: Math.max(1.2, node.position.y + 0.05),
+        z: node.position.z + 2.2
+      };
+
+      moveCameraTo(zoomPosition);
+      focusedNodeId = node.id;
+
+      showInfo(node);
+    }
   }
 });
