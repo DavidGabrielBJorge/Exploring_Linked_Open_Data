@@ -20,7 +20,7 @@ AFRAME.registerComponent("lod-graph", {
         id: "book",
         label: "Book",
         type: "Bibliographic Resource",
-        uri: "http://example.org/book/1",
+        url: "http://example.org/book/1",
         position: { x: 0, y: 2, z: -3 },
         color: "#4CC3D9"
       },
@@ -28,7 +28,7 @@ AFRAME.registerComponent("lod-graph", {
         id: "author",
         label: "Author",
         type: "Person",
-        uri: "http://example.org/person/1",
+        url: "http://example.org/person/1",
         position: { x: -2, y: 1.2, z: -3.8 },
         color: "#EF2D5E"
       },
@@ -36,7 +36,7 @@ AFRAME.registerComponent("lod-graph", {
         id: "subject",
         label: "Subject",
         type: "Concept",
-        uri: "http://example.org/concept/1",
+        url: "http://example.org/concept/1",
         position: { x: 2, y: 1.2, z: -3.8 },
         color: "#FFC65D"
       },
@@ -44,7 +44,7 @@ AFRAME.registerComponent("lod-graph", {
         id: "institution",
         label: "Library",
         type: "Organization",
-        uri: "http://example.org/library/1",
+        url: "http://example.org/library/1",
         position: { x: -1.4, y: 0.4, z: -5 },
         color: "#7BC8A4"
       },
@@ -52,7 +52,7 @@ AFRAME.registerComponent("lod-graph", {
         id: "dataset",
         label: "Dataset",
         type: "LOD Dataset",
-        uri: "http://example.org/dataset/1",
+        url: "http://example.org/dataset/1",
         position: { x: 1.4, y: 0.4, z: -5 },
         color: "#B10DC9"
       }
@@ -79,7 +79,7 @@ AFRAME.registerComponent("lod-graph", {
 
       document.querySelector("#info-title").innerText = node.label;
       document.querySelector("#info-type").innerText = node.type;
-      document.querySelector("#info-uri").innerText = node.uri;
+      document.querySelector("#info-url").innerText = node.url;
       document.querySelector("#info-relations").innerHTML = relatedEdges.length > 0 ? relatedEdges.map(r => `<li>${r}</li>`).join("") : "<li>No relations found.</li>";
     }
 
